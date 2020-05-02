@@ -1,0 +1,8 @@
+{
+  "appId": "com.profit.app",
+  "appName": "profit-ui",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

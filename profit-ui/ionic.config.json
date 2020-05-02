@@ -1,0 +1,7 @@
+{
+  "name": "profit-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
