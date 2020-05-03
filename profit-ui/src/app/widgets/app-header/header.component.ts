@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['header.component.scss']
 })
 export class AppHeaderComponent {
-  
+  @Input("showBackButton") showBackButton: boolean;
+
   constructor() {}
 
   ngOnInit() {}
