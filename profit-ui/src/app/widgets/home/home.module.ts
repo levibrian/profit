@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { AppHeaderModule } from '../app-header/header.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { HomeRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    AppHeaderModule
   ],
   declarations: [HomeComponent]
 })

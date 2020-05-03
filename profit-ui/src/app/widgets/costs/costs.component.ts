@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'profit-costs-component',
+  selector: 'profit-costs',
   templateUrl: 'costs.component.html',
   styleUrls: ['costs.component.scss']
 })

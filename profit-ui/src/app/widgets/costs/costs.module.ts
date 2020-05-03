@@ -2,10 +2,11 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { InvestmentsComponent } from './investments.component';
+import { CostsComponent } from './costs.component';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { InvestmentsRoutingModule } from './investments-routing.module';
+import { CostsRoutingModule } from './costs-routing.module';
+import { AppHeaderModule } from '../app-header/header.module';
 
 
 @NgModule({
@@ -14,8 +15,9 @@ import { InvestmentsRoutingModule } from './investments-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    InvestmentsRoutingModule
+    CostsRoutingModule,
+    AppHeaderModule
   ],
-  declarations: [InvestmentsComponent]
+  declarations: [CostsComponent]
 })
-export class InvestmentsModule {}
+export class CostsModule {}

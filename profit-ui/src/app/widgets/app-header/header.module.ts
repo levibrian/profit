@@ -2,10 +2,10 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CostsComponent } from './costs.component';
+import { AppHeaderComponent } from './header.component';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { CostsRoutingModule } from './costs-routing.module';
+import { AppHeaderRoutingModule } from './header-routing.module';
 
 
 @NgModule({
@@ -14,8 +14,9 @@ import { CostsRoutingModule } from './costs-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    CostsRoutingModule
+    AppHeaderRoutingModule
   ],
-  declarations: [CostsComponent]
+  declarations: [AppHeaderComponent],
+  exports: [AppHeaderComponent]
 })
-export class CostsModule {}
+export class AppHeaderModule {}
