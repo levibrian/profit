@@ -3,5 +3,59 @@
 <ion-content [fullscreen]="true" 
              [scrollEvents]="true"
              (ionScrollStart)="logScrollStart()">
-  <app-explore-container name="Costs"></app-explore-container>
+  <ion-card>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+ 
+  <ion-item-divider></ion-item-divider>
+  <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+    <ion-item>
+      <ion-label>Alquiler</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expensas</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cochera</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label>Alquiler</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expensas</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cochera</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Seguro Auto</ion-label>
+      <ion-label color="danger">$2500</ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+    </ion-item>
+  </ion-list>  -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
