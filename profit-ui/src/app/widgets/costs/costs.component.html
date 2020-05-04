@@ -26,7 +26,6 @@
   </ion-card>
  
   <ion-item-divider mode="ios"></ion-item-divider>
-  
   <ion-list>
     <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="true">
       <ion-list-header>
@@ -37,26 +36,13 @@
       </ion-list-header>
       
       <ion-item *ngFor="let item of listItems">
-        <ion-label>{{ item.description }}</ion-label>
+        <ion-label>{{ item.displayName }}</ion-label>
         <ion-label color="danger">$ {{ item.amount }}</ion-label>
-        <ion-checkbox slot="end" [checked]="item.paid" (ionChange)="checkboxOnChange"></ion-checkbox>
+        <ion-checkbox slot="end" (click)="checkboxOnChange($event, item)" 
+                                 [checked]="item.isPaid"
+                                 [(ngModel)]="item.isPaid" ></ion-checkbox>
         <ion-reorder slot="end"></ion-reorder>
       </ion-item>
     </ion-reorder-group>
   </ion-list>
-  
-  <!-- <ion-card>
-    <ion-card-header>
-      Doughnut Chart
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #doughnutCanvas></canvas>
-    </ion-card-content>
-  </ion-card> -->
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

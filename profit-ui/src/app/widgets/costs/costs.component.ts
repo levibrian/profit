@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Chart } from "chart.js";
 import { IonReorderGroup } from '@ionic/angular';
+import { Expense } from 'src/app/model/Expense';
 
 @Component({
   selector: 'profit-costs',
@@ -15,52 +16,36 @@ export class CostsComponent implements OnInit {
   private doughChart: Chart;
   private earnings: string;
   private totalExpenses: string;
-  private expensesPendingPayment: string;
-  private listItems: any;
+  private expensesPendingPayment: number;
+  private listItems: Array<Expense>;
 
   constructor() {
 
     this.listItems = [
-      { description: "Alquiler", amount: 13500, paid: true },
-      { description: "Expensas", amount: 6500, paid: false },
-      { description: "VISA", amount: 25300, paid: true },
+      new Expense(1, "Alquiler", 13500, true),
+      new Expense(2, "Expensas", 6645, false),
+      new Expense(3, "Psicologo", 4000, false),
+      new Expense(4, "VISA", 25400, false),
+      new Expense(5, "AMEX", 8900, true),
+      new Expense(3, "Psicologo", 4000, false),
+      new Expense(4, "VISA", 25400, false),
+      new Expense(5, "AMEX", 8900, true),
+      new Expense(3, "Psicologo", 4000, false),
+      new Expense(4, "VISA", 25400, false),
+      new Expense(5, "AMEX", 8900, true),
     ];
 
     this.earnings = "90000";
     this.totalExpenses = "56320";
-    
     this.expensesPendingPayment = this.calculatePendingPayments();
   }
 
   ngOnInit() {
-
-    // this.doughChart = new Chart(this.doughnutCanvas.nativeElement, {
-    //   type: "doughnut",
-    //   data: {
-    //     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    //     datasets: [
-    //       {
-    //         label: "# of Votes",
-    //         data: [12, 19, 3, 5, 2, 3],
-    //         backgroundColor: [
-    //           "rgba(255, 99, 132, 0.2)",
-    //           "rgba(54, 162, 235, 0.2)",
-    //           "rgba(255, 206, 86, 0.2)",
-    //           "rgba(75, 192, 192, 0.2)",
-    //           "rgba(153, 102, 255, 0.2)",
-    //           "rgba(255, 159, 64, 0.2)"
-    //         ],
-    //         hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#FF6384", "#36A2EB", "#FFCE56"]
-    //       }
-    //     ]
-    //   }
-    // });
+    
   }
 
   doReorder(ev: any) {
 
-     const draggedItem = this.listItems.splice(ev.detail.from, 1)[0];  
-     this.listItems.splice(ev.detail.to, 0, draggedItem);   
      ev.detail.complete();  
   }
 
@@ -69,17 +54,18 @@ export class CostsComponent implements OnInit {
   }
 
   calculatePendingPayments() {
-    
-    debugger;
     return this.listItems.filter((expense) => {
-      return !expense.paid;
+      return !expense.isPaid;
     }).map(a => a.amount)
       .reduce(function(a, b){
         return a + b;
       });
   }
 
-  checkboxOnChange() {
-    console.log(this.listItems);
+  checkboxOnChange(ev: any, item: Expense) {
+    // update database value.
+    this.expensesPendingPayment = !item.isPaid ? 
+          this.expensesPendingPayment - item.amount : 
+          this.expensesPendingPayment + item.amount;
   }
 }
