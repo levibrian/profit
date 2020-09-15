@@ -10,10 +10,6 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-label><ion-icon name="wallet"></ion-icon> Earnings:</ion-label>
-        <ion-label color="success">$ {{ earnings }}</ion-label>
-      </ion-item>
-      <ion-item>
         <ion-label><ion-icon name="card"></ion-icon> Total costs:</ion-label>
         <ion-label color="danger">$ {{ totalExpenses }}</ion-label>
       </ion-item>
@@ -23,22 +19,22 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-
   <ion-list>
     <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="true">
       <ion-list-header>
         <ion-label>Costs</ion-label>
         <ion-buttons>
-          <ion-button (click)="toggleManageButtons()">
-            <ion-label>Manage</ion-label>
-          </ion-button>
-          <ion-button (click)="toggleReorderGroup()">
-            <ion-label>Re-order</ion-label>
+          <ion-button (click)="toggleManageGroup()">
+            <ion-label>Edit</ion-label>
           </ion-button>
         </ion-buttons>
       </ion-list-header>
-      
       <ion-item *ngFor="let item of listItems">
+        <ion-buttons *ngIf="showManage">
+          <ion-button>
+            <ion-icon name="remove-circle" color="danger"></ion-icon>
+          </ion-button>
+        </ion-buttons>
         <ion-label>{{ item.displayName }}</ion-label>
         <ion-label color="danger">$ {{ item.amount }}</ion-label>
         <ion-checkbox (click)="checkboxOnChange($event, item)" 
@@ -47,9 +43,6 @@
         <ion-buttons *ngIf="showManage">
           <ion-button>
             <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-          </ion-button>
-          <ion-button>
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
         <ion-reorder slot="end"></ion-reorder>

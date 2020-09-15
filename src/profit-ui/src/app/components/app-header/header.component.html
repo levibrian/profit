@@ -4,16 +4,9 @@
       <ion-back-button *ngIf="showBackButton else showPrimaryBlock" defaultHref="/"></ion-back-button>
       <ng-template #showPrimaryBlock>
         <ion-button>
-          <ion-avatar>
-            <img src="../../../assets/download.png">
-          </ion-avatar>
+          <ion-icon name="person-circle-outline"></ion-icon>
         </ion-button>
       </ng-template>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
-      </ion-button>
     </ion-buttons>
     <ion-title>May</ion-title>
   </ion-toolbar>

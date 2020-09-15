@@ -16,7 +16,7 @@ export class CostsPage implements OnInit {
   private doughChart: Chart;
   private showManage: boolean;
   private earnings: string;
-  private totalExpenses: string;
+  private totalExpenses: number;
   private expensesPendingPayment: number;
   private listItems: Array<Expense>;
 
@@ -38,7 +38,7 @@ export class CostsPage implements OnInit {
 
     this.showManage = false;
     this.earnings = "90000";
-    this.totalExpenses = "56320";
+    this.totalExpenses = this.calculateTotalCosts();
     this.expensesPendingPayment = this.calculatePendingPayments();
   }
 
@@ -51,12 +51,16 @@ export class CostsPage implements OnInit {
      ev.detail.complete();  
   }
 
-  toggleReorderGroup() {
+  toggleManageGroup() {
     this.reorderGroup.disabled = !this.reorderGroup.disabled;
-  }
-
-  toggleManageButtons() {
     this.showManage = !this.showManage;
+  }
+  
+  calculateTotalCosts() {
+    return this.listItems.map(a => a.amount)
+                         .reduce(function(a, b){
+                           return a + b;
+                          });
   }
 
   calculatePendingPayments() {
